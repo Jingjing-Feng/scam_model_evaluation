@@ -1,0 +1,32 @@
+# Environment variables
+.env
+
+data/*
+
+
+# Python
+__pycache__/
+
+# Virtual environments
+.venv/
+venv/
+
+# IDEs
+.vscode/
+.cursor/
+
+# Operating System Files
+.DS_Store
+
+# Results and outputs
+*.csv.backup
+llm_evaluation_results.csv
+evaluation_results/
+
+# Temporary file
+*.tmp
+*.temp
+
+# Large datasets
+*.zip
+*.csv
