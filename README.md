@@ -59,3 +59,6 @@ See `requirements.txt` for a complete list of Python dependencies.
    ```bash
    python finetune.py --data_dir data/finetuned_dataset
    ```
+
+## Note
+In the evaluation notebooks, the fine-tuned BERT model's results are labeled as 'results' in all comparison charts.
