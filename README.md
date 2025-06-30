@@ -1,48 +1,61 @@
 # Phishing Detection Models
 
-This project implements and evaluates machine learning models for detecting phishing attempts in both SMS messages and emails.
+This project finetuned a BERT model that  and evaluates machine learning models for detecting phishing attempts in various communication channels including SMS messages, emails, and Telegram messages.
 
 ## Project Structure
 
 ```
-.
-├── data/
-│   ├── phishing_sms_dataset_unique.csv    # Dataset for SMS phishing detection
-│   └── unified_phishing_email_dataset.csv  # Dataset for email phishing detection
-├── email_model_evaluation.ipynb           # Jupyter notebook for evaluating email dataset
-├── inference_evaluation.py                # Script for model inference evaluation
-├── sms_model_evaluation.ipynb            # Jupyter notebook for evaluating SMS dataset
-└── requirements.txt                      # Python dependencies
+├── model_eval_notebook/                  # Model evaluation notebooks
+│   ├── email_model_evaluation.ipynb      # Email dataset evaluation
+│   ├── sms_model_evaluation.ipynb        # SMS dataset evaluation
+│   └── telegram_model_evaluation.ipynb   # Telegram dataset evaluation
+├── inference_evaluation.py              # Script for model evaluation
+├── process_data.py                      # Data preprocessing script for telegram dataset
+├── train.py                             # Model Finetuning script
+└── requirements.txt                     # Python dependencies
 ```
-
-## Setup
-
-1. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
 
 ## Components
 
-### SMS Phishing Detection
-- Uses the `phishing_sms_dataset_unique.csv` dataset
-- Model evaluation and analysis can be found in `sms_model_evaluation.ipynb`
+### Data Processing
+- `process_data.py`: Preprocesses and prepares Telegram dataset for BERT model fine-tuning
 
-### Email Phishing Detection
-- Uses the `unified_phishing_email_dataset.csv` dataset
-- Model evaluation and analysis can be found in `email_model_evaluation.ipynb`
+### Model Fine-tuning
+- `train.py`: Implements BERT model fine-tuning pipeline
+  - Fine-tunes pre-trained BERT model on phishing detection task
+  - Adapts BERT's architecture for multi-channel phishing detection
+
+### Model Evaluation
+Comprehensive evaluation notebooks for each communication channel:
+- Email Dataset Evaluation (`email_model_evaluation.ipynb`):
+  - Evaluates BERT model performance on email phishing detection
+  - Analyzes different models behavior on phishing email data
+  
+- SMS Dataset Evaluation (`sms_model_evaluation.ipynb`):
+  - Evaluates BERT model performance on sms phishing detection
+  - Analyzes different models behavior on phishing sms data
+  
+- Telegram Dataset Evaluation (`telegram_model_evaluation.ipynb`):
+  - Evaluates BERT model performance on Telegram phishing detection
+  - Analyzes different models behavior on phishing telegram data
+
 
 ## Requirements
 
 See `requirements.txt` for a complete list of Python dependencies.
 
 ## Usage
-1. First, ensure all dependencies are installed
-2. Run the Jupyter notebooks to see the model evaluation and analysis:
+1. First, ensure all dependencies are installed:
    ```bash
-   jupyter notebook
+   pip install -r requirements.txt
    ```
-3. For sample inference evaluation, run:
+
+2. Process the data:
    ```bash
-   python inference_evaluation.py
+   python process_data.py
+   ```
+
+3. Fintuned the models:
+   ```bash
+   python finetune.py --data_dir data/finetuned_dataset
    ```
